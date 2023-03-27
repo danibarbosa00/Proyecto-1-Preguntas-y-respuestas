@@ -40,6 +40,11 @@ const preguntasRespuestasContador = () => {
           preguntasRespuestas(index + 1);
         });
       }
+
+      //mensaje de contador al final.
+      // if (question === question.lenght) {
+      // questionElement.textContent = `Tu resultado es ${contador}`;
+      //}
     } catch (error) {
       console.error(error.message);
     }
