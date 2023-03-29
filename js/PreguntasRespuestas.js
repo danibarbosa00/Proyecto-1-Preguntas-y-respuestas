@@ -1,7 +1,7 @@
 // "use strict";
 
 const preguntasRespuestasContador = () => {
-  let contador = 0;
+  let score = 0;
   const preguntasRespuestas = async (index) => {
     try {
       const response = await fetch(
@@ -18,7 +18,7 @@ const preguntasRespuestasContador = () => {
       div.append(questionElement);
       div.append(answersElement);
       div.append(span);
-      span.append(contador);
+      span.append(score);
 
       for (const answer of answers) {
         const answerElement = document.createElement("li");
@@ -26,25 +26,34 @@ const preguntasRespuestasContador = () => {
         answersElement.append(answerElement);
         answerElement.addEventListener("click", () => {
           if (answerElement.textContent === correct) {
-            contador++;
+            score++;
+
+            const colorAnswers = () => {
+              const timeoutID = setInterval(() => {
+                answerElement.style.background("green");
+                clearInterval(timeoutID);
+              }, delay);
+              colorAnswers();
+            };
+
             answerElement.remove();
           } else {
             answerElement.remove();
           }
-          span.textContent = contador;
+          span.textContent = score;
           div.innerHTML = "";
 
           if (index === body.length - 1) {
             const mensajeFinal = document.createElement("h2");
-            mensajeFinal.textContent = `Fin del juego. Has acertado ${contador} preguntas.`;
+            mensajeFinal.textContent = `Your final score is ${score}`;
             div.appendChild(mensajeFinal);
 
             const restartButton = document.createElement("button");
-            restartButton.textContent = "Reiniciar juego";
+            restartButton.textContent = "Reset game";
             div.appendChild(restartButton);
 
             restartButton.addEventListener("click", () => {
-              contador = 0;
+              score = 0;
               preguntasRespuestas(0);
               restartButton.remove();
               mensajeFinal.remove();

@@ -6,7 +6,7 @@ const start = document.createElement("h1");
 const header = document.querySelector("header");
 
 header.append(start);
-start.textContent = "Comenzar";
+start.textContent = "Start";
 start.addEventListener("click", () => {
   preguntasRespuestasContador();
   start.remove();
