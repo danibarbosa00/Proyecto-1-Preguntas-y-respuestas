@@ -53,7 +53,7 @@ const preguntasRespuestas = async (index) => {
               div.innerHTML = "";
               preguntasRespuestas(index + 1);
             }
-          }, 1000);
+          }, 300);
           
         } else {
           answerElement.style.backgroundColor = "red";
@@ -79,7 +79,7 @@ const preguntasRespuestas = async (index) => {
               div.innerHTML = "";
               preguntasRespuestas(index + 1);
             }
-          }, 1000);
+          }, 300);
         }
 
         span.textContent = score;
